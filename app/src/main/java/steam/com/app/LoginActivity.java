@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        ////前往注册控件的点击事件，跳转到注册界面
+        //前往注册控件的点击事件，跳转到注册界面
         mToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
