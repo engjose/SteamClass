@@ -1,8 +1,5 @@
 package steam.com.app.api;
 
-
-
-
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -11,9 +8,6 @@ import steam.com.app.mould.LoginResp;
 import steam.com.app.mould.RegisterReq;
 import steam.com.app.mould.RegisterResp;
 
-/**
- * @author zshp
- */
 public class ApiServeice {
 
     /**

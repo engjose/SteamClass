@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -10,7 +11,15 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/default_icon" />
 
         <EditText
             android:id="@+id/et_nickname"
@@ -50,6 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:visibility="gone" />//Android控件的可见属性，visible为可见，默认值，不指定Android：visibility时控件都是可见的
+                                    //invisible为不可见，但仍占据位置
+                                   //gone表示不仅不可见，而且不占用屏幕空间
 
 </RelativeLayout>

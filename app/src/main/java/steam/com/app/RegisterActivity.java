@@ -15,9 +15,6 @@ import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.mould.RegisterResp;
 
-/**
- * @author zshp
- */
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mNickname;
@@ -33,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         initListener();
     }
 
+    // 从activity_register.xml页面布局中获得对应的UI控件
     private void initView() {
         mNickname = findViewById(R.id.et_nickname);
         mPassword = findViewById(R.id.et_password);

@@ -10,9 +10,6 @@ import steam.com.app.mould.LoginResp;
 import steam.com.app.mould.RegisterReq;
 import steam.com.app.mould.RegisterResp;
 
-/**
- * @author zshp
- */
 public interface ApiInterface {
 
     /**
@@ -32,4 +29,6 @@ public interface ApiInterface {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrl.LOGIN)
     Observable<LoginResp> login(@Body LoginReq requestBean);
+
+
 }

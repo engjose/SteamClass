@@ -8,10 +8,6 @@ import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 
-/**
- * @author lxx
- * @date 2016/3/24
- */
 public class Store {
 
     public static final long DEFAULT_LONG_TYPE = -1L;

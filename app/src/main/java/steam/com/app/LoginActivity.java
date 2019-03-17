@@ -24,18 +24,19 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPassword;
     private Button mLogin;
     private TextView mToRegister;
-    private ProgressBar progressBar;
+    private ProgressBar progressBar;//进度条
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        initView();
-        initListener();
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_login);//etContentView（）方法是给当前活动加载一个布局
+            initView();//自己定义的方法
+            initListener();
     }
 
+    // 从activity_login.xml页面布局中获得对应的UI控件
     private void initView() {
-        mNickname = findViewById(R.id.et_nickname);
+        mNickname = findViewById(R.id.et_nickname);//调用findViewById（）方法获取et_nickname文本框
         mPassword = findViewById(R.id.et_password);
         mLogin = findViewById(R.id.btn_login);
         mToRegister = findViewById(R.id.tv_to_register);
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initListener() {
+        //登录按钮的点击事件
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        ////前往注册控件的点击事件，跳转到注册界面
         mToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,8 +67,9 @@ public class LoginActivity extends AppCompatActivity {
      */
     @SuppressLint("CheckResult")
     private void login() {
+        //获取输入在相应控件中的字符串
         progressBar.setVisibility(View.VISIBLE);
-        String nickname = mNickname.getText().toString();
+        String nickname = mNickname.getText().toString();//获取文本框内容
         String password = mPassword.getText().toString();
         ApiServeice
                 .login(nickname, password)
@@ -84,9 +88,9 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 }, new Consumer<Throwable>() {
-                    @Override
+                    @Override//异常处理
                     public void accept(Throwable throwable) {
-                        progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);//setVisibility（）方法设置空间的可见性
                         Toast.makeText(LoginActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
