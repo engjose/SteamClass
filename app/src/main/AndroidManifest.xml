@@ -29,6 +29,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".P_InformationActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait" />
 
     </application>

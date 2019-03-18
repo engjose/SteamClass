@@ -12,7 +12,7 @@ import android.widget.TextView;
 //先实例化控件
 public class PcenterActivity extends AppCompatActivity {
     //来自activity_main.xml
-    private RelativeLayout main_body1;
+   // private RelativeLayout main_body1;
     private  ImageView head_pic;
     private TextView nick_name;
     private Button b_information;
@@ -31,6 +31,7 @@ public class PcenterActivity extends AppCompatActivity {
         private void initView1() {
             head_pic = findViewById(R.id.et_head_pic);//调用findViewById（）方法获取到et_head_pic
             nick_name = findViewById(R.id.et_nick_name);
+            b_information = findViewById(R.id.btn_information);
         }
 
     private void initListener1() {
