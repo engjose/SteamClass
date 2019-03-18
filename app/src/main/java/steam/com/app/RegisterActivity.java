@@ -10,7 +10,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
-
 import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.mould.RegisterResp;
@@ -66,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                             finish();
                         } else {
                             Toast.makeText(RegisterActivity.this, registerResp.message, Toast.LENGTH_SHORT).show();
+                            ApiServeice.tokenInvalid(RegisterActivity.this, registerResp.code);
                         }
                     }
                 }, new Consumer<Throwable>() {

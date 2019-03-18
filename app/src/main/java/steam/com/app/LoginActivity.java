@@ -12,9 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
 import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
+import steam.com.app.application.GlobalCache;
+import steam.com.app.mould.Constans;
 import steam.com.app.mould.LoginResp;
 import steam.com.app.util.Store;
 
@@ -28,10 +29,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_login);//etContentView（）方法是给当前活动加载一个布局
-            initView();//自己定义的方法
-            initListener();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);//etContentView（）方法是给当前活动加载一个布局
+        initView();//自己定义的方法
+        initListener();
     }
 
     // 从activity_login.xml页面布局中获得对应的UI控件
@@ -85,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         } else {
                             Toast.makeText(LoginActivity.this, loginResp.message, Toast.LENGTH_SHORT).show();
+                            ApiServeice.tokenInvalid(LoginActivity.this, loginResp.code);
                         }
                     }
                 }, new Consumer<Throwable>() {

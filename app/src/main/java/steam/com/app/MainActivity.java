@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import steam.com.app.mould.Constans;
 import steam.com.app.util.Store;
 
 
