@@ -11,6 +11,8 @@ import steam.com.app.util.Store;
 public class BaseReqBean implements Cloneable, Serializable {
     public String token = Store.getString(GlobalCache.getContext(), Constans.TOKEN);
 
+    public String role = "0";
+
     @Override
     public BaseReqBean clone() throws CloneNotSupportedException {
         return (BaseReqBean) super.clone();

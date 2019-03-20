@@ -2,9 +2,6 @@ package steam.com.app.application;
 
 import android.content.Context;
 
-/**
- * @author changsunhaipeng
- */
 public class GlobalCache {
     private static final GlobalCache instance = new GlobalCache();
     private Context mContext;

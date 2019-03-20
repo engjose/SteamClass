@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivityPerson"
+            android:name=".LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,20 +24,13 @@
             android:name=".RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".ActivityPerson"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".P_InformationActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-
-        <activity android:name=".PcenterActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
+           // android:windowSoftInputMode="stateHidden|adjustResize"
 
     </application>
 

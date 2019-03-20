@@ -1,0 +1,112 @@
+package steam.com.app;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.os.Bundle;
+import android.widget.RelativeLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+
+import java.io.File;
+import java.net.URI;
+
+import io.reactivex.functions.Consumer;
+import steam.com.app.api.ApiServeice;
+import steam.com.app.application.GlobalCache;
+import steam.com.app.mould.CenterResp;
+import steam.com.app.mould.Constans;
+import steam.com.app.mould.PointBean;
+import steam.com.app.mould.UserBean;
+import steam.com.app.util.Store;
+
+public class ActivityFragment4Fragment extends Fragment implements View.OnClickListener {
+
+    private RelativeLayout m_rBody;
+    private ImageView m_headPic;
+    private TextView m_nickName;
+
+    // 积分属性
+    private PointBean point;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_fragment_4, null);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        m_rBody = (RelativeLayout) view.findViewById(R.id.r_body);
+        m_headPic = (ImageView) view.findViewById(R.id.head_pic);
+        m_nickName = (TextView) view.findViewById(R.id.nick_name);
+        view.findViewById(R.id.btn_information).setOnClickListener(this);
+        view.findViewById(R.id.btn_order).setOnClickListener(this);
+        view.findViewById(R.id.btn_collect).setOnClickListener(this);
+        view.findViewById(R.id.btn_point).setOnClickListener(this);
+
+        getUserCenter();
+    }
+
+
+    /**
+     * get user center info
+     */
+    @SuppressLint("CheckResult")
+    public void getUserCenter() {
+        ApiServeice.center()
+                .subscribe(new Consumer<CenterResp>() {
+                    @Override
+                    public void accept(CenterResp centerResp) throws Exception {
+                        if (centerResp.code == 0) {
+                            // 设置参数
+                            UserBean userInfo = centerResp.userInfo;
+                            point = centerResp.point;
+
+                            // 用户基本信息
+                            Glide.with(GlobalCache.getContext()).load(userInfo.headPic).into(m_headPic);
+                            m_nickName.setText(userInfo.nickName);
+                        } else {
+                            Toast.makeText(getActivity(), centerResp.message, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override//异常处理
+                    public void accept(Throwable throwable) {
+                        Toast.makeText(getActivity(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_information:
+                Intent intent=new Intent(getActivity(),P_InformationActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_order:
+                //TODO implement
+                break;
+            case R.id.btn_collect:
+                //TODO implement
+                break;
+            case R.id.btn_point:
+
+                break;
+        }
+    }
+
+
+
+}

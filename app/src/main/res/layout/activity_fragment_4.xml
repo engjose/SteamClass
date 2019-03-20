@@ -2,36 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
     <RelativeLayout
-        android:id="@+id/main_body"
+        android:id="@+id/r_body"
         android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="510dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/et_head_pic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="25dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/head_pic"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/head_pic"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/head_pic" />
-        <EditText
-            android:id="@+id/et_nick_name"
-            android:layout_below="@+id/et_head_pic"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:id="@+id/nick_name"
+            android:layout_below="@+id/head_pic"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
-            android:text="用户名"
+            android:text="nick_name"
             android:textSize="25dp"/>
         <Button
-               android:id="@+id/btn_information"
-               android:layout_width="match_parent"
-               android:layout_height="60dp"
-               android:layout_marginTop="160dp"
-               android:gravity="fill_vertical"
-               android:text="我的信息"
-               android:textColor="#000000" />
+            android:id="@+id/btn_information"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="160dp"
+            android:gravity="fill_vertical"
+            android:text="我的信息"
+            android:textColor="#000000" />
         <Button
             android:id="@+id/btn_order"
             android:layout_width="match_parent"
@@ -56,7 +61,6 @@
             android:gravity="fill_vertical"
             android:text="我的学币"
             android:textColor="#000000" />
-        </RelativeLayout>
-    <include layout="@layout/activity_bottom_bar" />
-    <!--底部导航栏-->
+    </RelativeLayout>
+
 </LinearLayout>

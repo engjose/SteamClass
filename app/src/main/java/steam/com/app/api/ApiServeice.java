@@ -8,6 +8,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import steam.com.app.LoginActivity;
 import steam.com.app.application.GlobalCache;
+import steam.com.app.mould.CenterReq;
+import steam.com.app.mould.CenterResp;
 import steam.com.app.mould.Constans;
 import steam.com.app.mould.LoginReq;
 import steam.com.app.mould.LoginResp;
@@ -64,4 +66,21 @@ public class ApiServeice {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    /**
+     *  个人中心
+     *
+     * @return
+     */
+    public static Observable<CenterResp> center() {
+        CenterReq centerReq = new CenterReq();
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .center(centerReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
+
+
 }

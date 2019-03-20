@@ -81,8 +81,8 @@ public class LoginActivity extends AppCompatActivity {
                         if (loginResp.code == 0) {
                             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                             Store.putString(LoginActivity.this, Constans.TOKEN, loginResp.token);
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+                           Intent intent = new Intent(LoginActivity.this, ActivityPerson.class);
+                           startActivity(intent);
                             finish();
                         } else {
                             Toast.makeText(LoginActivity.this, loginResp.message, Toast.LENGTH_SHORT).show();
