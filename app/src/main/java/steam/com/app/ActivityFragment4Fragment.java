@@ -76,6 +76,7 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
                             m_nickName.setText(userInfo.nickName);
                         } else {
                             Toast.makeText(getActivity(), centerResp.message, Toast.LENGTH_SHORT).show();
+                            ApiServeice.tokenInvalid(GlobalCache.getContext(), centerResp.code);
                         }
                     }
                 }, new Consumer<Throwable>() {
