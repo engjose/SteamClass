@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
-     <!--放置Fragment的main_body-->
+    <!--放置Fragment的main_body-->
     <RelativeLayout
         android:id="@+id/main_body"
-        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="510dp">
-    </RelativeLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white" />
     <!--实现在底部，水平排列按钮-->
     <LinearLayout
         android:id="@+id/main_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:background="#F2F2F2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="55dp">
+        android:orientation="horizontal">
+
         <RelativeLayout
             android:id="@+id/bottom_bar_1_btn"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <TextView
                 android:id="@+id/bottom_bar_text_1"
                 android:layout_width="match_parent"
@@ -36,7 +38,8 @@
                 android:singleLine="true"
                 android:text="首页"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:id="@+id/bottom_bar_image_1"
                 android:layout_width="27dp"
@@ -45,13 +48,15 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/main1"/>
+                android:src="@drawable/main1" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/bottom_bar_2_btn"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <TextView
                 android:id="@+id/bottom_bar_text_2"
                 android:layout_width="match_parent"
@@ -63,7 +68,8 @@
                 android:singleLine="true"
                 android:text="分类"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:id="@+id/bottom_bar_image_2"
                 android:layout_width="27dp"
@@ -72,13 +78,15 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/type1"/>
+                android:src="@drawable/type1" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/bottom_bar_3_btn"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <TextView
                 android:id="@+id/bottom_bar_text_3"
                 android:layout_width="match_parent"
@@ -90,7 +98,8 @@
                 android:singleLine="true"
                 android:text="课程表"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:id="@+id/bottom_bar_image_3"
                 android:layout_width="27dp"
@@ -99,13 +108,15 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/schedule1"/>
+                android:src="@drawable/schedule1" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/bottom_bar_4_btn"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <TextView
                 android:id="@+id/bottom_bar_text_4"
                 android:layout_width="match_parent"
@@ -117,7 +128,8 @@
                 android:singleLine="true"
                 android:text="我的"
                 android:textColor="#666666"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
+
             <ImageView
                 android:id="@+id/bottom_bar_image_4"
                 android:layout_width="27dp"
@@ -126,7 +138,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/center1"/>
+                android:src="@drawable/center1" />
         </RelativeLayout>
     </LinearLayout>
 
