@@ -1,4 +1,5 @@
 package steam.com.app;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
@@ -86,12 +87,11 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
     }
 
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_information:
-                Intent intent=new Intent(getActivity(),P_InformationActivity.class);
+                Intent intent = new Intent(getActivity(), P_InformationActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_order:
@@ -101,13 +101,16 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
                 //TODO implement
                 break;
             case R.id.btn_point:
-                Intent pointIntent=new Intent(getActivity(),P_PointActivity.class);//切换到P_PointActivity页面
-                pointIntent.putExtra("point", point);//附带积分属性相关信息，调用putExtra（）方法传递
-                startActivity(pointIntent);
+                if (point != null) {
+                    Intent pointIntent = new Intent(getActivity(), P_PointActivity.class);//切换到P_PointActivity页面
+                    pointIntent.putExtra("point", point);//附带积分属性相关信息，调用putExtra（）方法传递
+                    startActivity(pointIntent);
+                }
+                break;
+            default:
                 break;
         }
     }
-
 
 
 }

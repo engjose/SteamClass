@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/r_body"
-        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/head_pic"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@drawable/head_pic"
             android:layout_centerHorizontal="true"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            android:src="@drawable/head_pic"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
 
         <TextView
             android:id="@+id/nick_name"
-            android:layout_below="@+id/head_pic"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_below="@+id/head_pic"
             android:gravity="center"
-            android:text="nick_name"
-            android:textSize="25dp"/>
+            android:hint="请登录"
+            android:textSize="25dp" />
+
         <Button
             android:id="@+id/btn_information"
             android:layout_width="match_parent"
@@ -37,6 +38,7 @@
             android:gravity="fill_vertical"
             android:text="我的信息"
             android:textColor="#000000" />
+
         <Button
             android:id="@+id/btn_order"
             android:layout_width="match_parent"
@@ -45,6 +47,7 @@
             android:gravity="fill_vertical"
             android:text="我的订单"
             android:textColor="#000000" />
+
         <Button
             android:id="@+id/btn_collect"
             android:layout_width="match_parent"
@@ -53,6 +56,7 @@
             android:gravity="fill_vertical"
             android:text="我的收藏"
             android:textColor="#000000" />
+
         <Button
             android:id="@+id/btn_point"
             android:layout_width="match_parent"
