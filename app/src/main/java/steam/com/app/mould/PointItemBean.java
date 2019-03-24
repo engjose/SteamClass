@@ -1,6 +1,8 @@
 package steam.com.app.mould;
 
-public class PointItemBean {
+import java.io.Serializable;
+
+public class PointItemBean implements Serializable {
 
     /** 积分来源 */
     public String source;

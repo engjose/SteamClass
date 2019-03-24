@@ -71,7 +71,6 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
                             UserBean userInfo = centerResp.userInfo;
                             point = centerResp.point;
 
-                            // 用户基本信息
                             Glide.with(GlobalCache.getContext()).load(userInfo.headPic).into(m_headPic);
                             m_nickName.setText(userInfo.nickName);
                         } else {
@@ -102,7 +101,9 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
                 //TODO implement
                 break;
             case R.id.btn_point:
-
+                Intent pointIntent=new Intent(getActivity(),P_PointActivity.class);//切换到P_PointActivity页面
+                pointIntent.putExtra("point", point);//附带积分属性相关信息，调用putExtra（）方法传递
+                startActivity(pointIntent);
                 break;
         }
     }

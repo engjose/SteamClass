@@ -40,8 +40,6 @@ public class ActivityPerson extends FragmentActivity implements View.OnClickList
 
     private int x=0;
 
-    //private TextView mToken;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -163,13 +161,5 @@ public class ActivityPerson extends FragmentActivity implements View.OnClickList
                 tbottom_bar_image_2.setImageResource(R.drawable.type1);
                 tbottom_bar_image_3.setImageResource(R.drawable.schedule1);
                 break; } }
-
-
-    //private void initView1() {
-       // TextView mToken = findViewById(R.id.tv_token);
-       // String token = Store.getString(ActivityPerson.this, Constans.TOKEN);
-       // mToken.setText("token:" + token); }
-
-
 }
 
