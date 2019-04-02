@@ -29,7 +29,7 @@ public class CourseAdapter extends BaseQuickAdapter<CourseBean, BaseViewHolder> 
         if (item.priceType.equals(0)) {
             priceType.setText("免费");
         } else {
-            priceType.setText(item.price);
+            priceType.setText(item.price + "");
         }
     }
 }

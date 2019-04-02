@@ -11,7 +11,7 @@ public class CourseBean implements Serializable {
     public String courseTypeDesc;
     public String merchantInfo;
     public String merchantName;
-    public int price;
+    public float price;
     public String priceType;
     public String teacherInfo;
     public String teacherName;
