@@ -11,10 +11,15 @@ import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.CenterReq;
 import steam.com.app.mould.CenterResp;
 import steam.com.app.mould.Constans;
+import steam.com.app.mould.CourseReq;
+import steam.com.app.mould.CourseBean;
+import steam.com.app.mould.CourseResp;
 import steam.com.app.mould.LoginReq;
 import steam.com.app.mould.LoginResp;
 import steam.com.app.mould.RegisterReq;
 import steam.com.app.mould.RegisterResp;
+import steam.com.app.mould.UpdatepswReq;
+import steam.com.app.mould.UpdatepswResp;
 import steam.com.app.util.Store;
 
 public class ApiServeice {
@@ -68,7 +73,7 @@ public class ApiServeice {
     }
 
     /**
-     *  个人中心
+     * 个人中心
      *
      * @return
      */
@@ -80,7 +85,35 @@ public class ApiServeice {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    /**
+     * 修改密码
+     *
+     * @return
+     */
+    public static Observable<UpdatepswResp> update(String password) {
+        UpdatepswReq updatepswReq = new UpdatepswReq();
+        updatepswReq.password = password;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .update(updatepswReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
+    /**
+     * 修课程
+     *
+     * @return
+     */
+    public static Observable<CourseResp> course(String courseNameMatch, String courseType, String priceSort) {
+        CourseReq courseReq = new CourseReq();
+        courseReq.courseNameMatch = courseNameMatch;
+        courseReq.courseType = courseType;
+        courseReq.priceSort = priceSort;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .course(courseReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
 
 }

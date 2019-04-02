@@ -6,5 +6,7 @@ public class ApiUrl {
     public static final String REGISTER = "user/register";
     public static final String LOGIN = "user/login";
     public static final String CENTER = "user/center";
+    public static final String UPDATE = "user/update/password";
+    public static final String COURSE = "course/list";
 
 }

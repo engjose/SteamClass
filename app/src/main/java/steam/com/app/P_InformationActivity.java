@@ -17,6 +17,8 @@ import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.CenterResp;
+import steam.com.app.mould.LoginResp;
+import steam.com.app.mould.UpdatepswResp;
 import steam.com.app.mould.UserBean;
 
 public class P_InformationActivity extends AppCompatActivity implements View.OnClickListener {
@@ -45,7 +47,7 @@ public class P_InformationActivity extends AppCompatActivity implements View.OnC
         m_btn_edit = (Button) findViewById(R.id.btn_edit);
         m_btn_save =findViewById(R.id.btn_save) ;
         m_btn_edit.setOnClickListener(this);
-
+        m_btn_save.setOnClickListener(this);
         m_text_psw.setFocusable(false);
         m_text_psw.setFocusableInTouchMode(false);
 
@@ -88,6 +90,30 @@ public class P_InformationActivity extends AppCompatActivity implements View.OnC
                 m_text_psw.setFocusableInTouchMode(true);
                 m_btn_edit.setVisibility(View.GONE);
                 m_btn_save.setVisibility(View.VISIBLE);
+                break;
+        }
+        switch (v.getId()){
+            case R.id.btn_save:
+                String text_psw = m_text_psw.getText().toString();//获取文本框内容
+                ApiServeice
+                        .update(text_psw)
+                        .subscribe(new Consumer<UpdatepswResp>() {
+                            @Override
+                            public void accept(UpdatepswResp updatepswResp) {
+                                if (updatepswResp.code == 0) {
+                                    Toast.makeText(P_InformationActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }else {
+                                    Toast.makeText(P_InformationActivity.this, updatepswResp.message, Toast.LENGTH_SHORT).show();
+                                    ApiServeice.tokenInvalid(P_InformationActivity.this, updatepswResp.code);
+                                }
+                            }
+                            }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) {
+                                Toast.makeText(P_InformationActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
                 break;
         }
     }
