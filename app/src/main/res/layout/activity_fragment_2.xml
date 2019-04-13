@@ -4,12 +4,163 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
-    <TextView
-        android:id="@+id/text2"
-        android:text="Fragment_2"
-        android:textColor="@android:color/black"
-        android:textSize="50sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/LinearLayout_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <EditText
+            android:id="@+id/text_search"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:text="请输入关键字"
+            android:textSize="20dp"
+            android:textColor="#BFB8B6" />
+        <Button
+            android:id="@+id/bottom_search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="搜索"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_type1"
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_s"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="5dp">
+           <ImageView
+                android:id="@+id/image1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:src="@drawable/type_1" />
+           <TextView
+                android:id="@+id/text1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="科学"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_below="@+id/image1"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_t"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="25dp">
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:src="@drawable/type_2" />
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="技术"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_below="@+id/image2"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_e"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="25dp">
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:src="@drawable/type_3" />
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="工程"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_below="@+id/image3"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/LinearLayout_type2"
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_a"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="5dp">
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:src="@drawable/type_4" />
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="艺术"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_below="@+id/image4"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_m"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="25dp">
+            <ImageView
+                android:id="@+id/image5"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:src="@drawable/type_5" />
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="数学"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_below="@+id/image5"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_all"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="25dp">
+            <ImageView
+                android:id="@+id/image6"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:src="@drawable/type_6" />
+            <TextView
+                android:id="@+id/text6"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="综合"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_below="@+id/image6"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/spinner_price"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></Spinner>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_course2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

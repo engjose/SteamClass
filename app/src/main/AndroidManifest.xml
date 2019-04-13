@@ -31,7 +31,6 @@
             android:name=".P_PointActivity"
             android:screenOrientation="portrait" />
 
-
     </application>
 
 </manifest>

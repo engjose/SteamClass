@@ -32,7 +32,6 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
     private RelativeLayout m_rBody;
     private ImageView m_headPic;
     private TextView m_nickName;
-
     // 积分属性
     private PointBean point;
 

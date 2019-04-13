@@ -103,12 +103,12 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
      * 初始化要显示的数据
      */
     public void initData() {
-        loadCourseData();
+        renderPage(null, null, null);
     }
 
     @SuppressLint("CheckResult")
-    private void loadCourseData() {
-        ApiServeice.course(null, null, null)
+    private void renderPage(String courseNameMatch, String courseType, String priceSort) {
+        ApiServeice.course(courseNameMatch, courseType, priceSort)
                 .subscribe(new Consumer<CourseResp>() {
                     @Override
                     public void accept(CourseResp courseResp) {

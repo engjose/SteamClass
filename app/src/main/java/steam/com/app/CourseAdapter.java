@@ -26,7 +26,7 @@ public class CourseAdapter extends BaseQuickAdapter<CourseBean, BaseViewHolder> 
         helper.setText(R.id.tv_course_name, item.courseName);
 
         TextView priceType = helper.getView(R.id.tv_price_type);
-        if (item.priceType.equals(0)) {
+        if (item.priceType.equals("0")) {
             priceType.setText("免费");
         } else {
             priceType.setText(item.price + "");
