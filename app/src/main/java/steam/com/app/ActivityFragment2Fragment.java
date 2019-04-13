@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -36,8 +37,12 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
     private RelativeLayout mRelativeLayout_a;
     private RelativeLayout mRelativeLayout_m;
     private RelativeLayout mRelativeLayout_all;
+    private String courseType = null;
+    private String priceSort = null;
+    private String textSearch = null;
+
     Spinner mspinner_price;
-    String[] s_price={"价格排序","价格升序","价格降序"};
+    String[] s_price = {"价格排序", "价格升序", "价格降序"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +56,7 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
         initView(view);
         renderPage(null, null, null);
     }
+
     private void initView(View view) {
         mRv = view.findViewById(R.id.rv_course2);
         mRv.setLayoutManager(new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false));
@@ -74,12 +80,14 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
         //1.为下拉列表定义一个数组适配器，这个数组适配器就用到里前面定义的s_price。装的都是s_price所添加的内容
         mspinner_price = (Spinner) view.findViewById(R.id.spinner_price);
         //2.样式为安卓里面有的android.R.layout.simple_spinner_item，让这个数组适配器装s_price内容。
-        ArrayAdapter<String> arrayAdapter1=new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,s_price);
+        ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item, s_price);
         //3.以上声明完毕后，建立适配器,有关于sipnner这个控件的建立。用到mspinner_price
         mspinner_price.setAdapter(arrayAdapter1);
         mspinner_price.setOnItemSelectedListener(new spinnerSelectedListenner());//绑定事件监听
     }
+
     private class spinnerSelectedListenner implements AdapterView.OnItemSelectedListener {
+        @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             /*
              * parent接收的是被选择的数据项所属的 Spinner对象，
@@ -87,19 +95,25 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
              * position接收的是被选择的数据项在适配器中的位置
              * id被选择的数据项的行号
              */
-                    if (mspinner_price.getSelectedItem().toString().equals("价格排序"))
-                    { renderPage(null, null, null); }
-                    else if (mspinner_price.getSelectedItem().toString().equals("价格升序"))
-                    { renderPage(null, null, "0"); }
-                    else if (mspinner_price.getSelectedItem().toString().equals("价格降序"))
-                    { renderPage(null, null, "1"); }
+            if (mspinner_price.getSelectedItem().toString().equals("价格排序")) {
+                priceSort = null;
+                renderPage(textSearch, courseType, priceSort);
+            } else if (mspinner_price.getSelectedItem().toString().equals("价格升序")) {
+                priceSort = "0";
+                renderPage(textSearch, courseType, priceSort);
+            } else if (mspinner_price.getSelectedItem().toString().equals("价格降序")) {
+                priceSort = "1";
+                renderPage(textSearch, courseType, priceSort);
+            }
         }
+
+        @Override
         public void onNothingSelected(AdapterView<?> parent) {
             renderPage(null, null, null);
         }
     }
 
-        @SuppressLint("CheckResult")
+    @SuppressLint("CheckResult")
     private void renderPage(String courseNameMatch, String courseType, String priceSort) {
         ApiServeice.course(courseNameMatch, courseType, priceSort)
                 .subscribe(new Consumer<CourseResp>() {
@@ -121,10 +135,13 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
                 });
     }
 
+    @Override
     public void onClick(View view) {
+        textSearch = TextUtils.isEmpty(mtext_search.getText().toString().trim()) ? null : mtext_search.getText().toString().trim();
         switch (view.getId()) {
             case R.id.RelativeLayout_s:
-                renderPage(null, "0", null);
+                courseType = "0";
+                renderPage(textSearch, courseType, priceSort);
                 mRelativeLayout_s.setBackgroundColor(Color.parseColor("#F5F5DC"));
                 mRelativeLayout_t.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_e.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -133,7 +150,8 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
                 mRelativeLayout_all.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
             case R.id.RelativeLayout_t:
-                renderPage(null, "1", null);
+                courseType = "1";
+                renderPage(textSearch, courseType, priceSort);
                 mRelativeLayout_s.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_t.setBackgroundColor(Color.parseColor("#F5F5DC"));
                 mRelativeLayout_e.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -142,7 +160,8 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
                 mRelativeLayout_all.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
             case R.id.RelativeLayout_e:
-                renderPage(null, "2", null);
+                courseType = "2";
+                renderPage(textSearch, courseType, priceSort);
                 mRelativeLayout_s.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_t.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_e.setBackgroundColor(Color.parseColor("#F5F5DC"));
@@ -151,7 +170,8 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
                 mRelativeLayout_all.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
             case R.id.RelativeLayout_a:
-                renderPage(null, "3", null);
+                courseType = "3";
+                renderPage(textSearch, courseType, priceSort);
                 mRelativeLayout_s.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_t.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_e.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -160,7 +180,8 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
                 mRelativeLayout_all.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
             case R.id.RelativeLayout_m:
-                renderPage(null, "4", null);
+                courseType = "4";
+                renderPage(textSearch, courseType, priceSort);
                 mRelativeLayout_s.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_t.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_e.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -169,7 +190,8 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
                 mRelativeLayout_all.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 break;
             case R.id.RelativeLayout_all:
-                renderPage(null, null, null);
+                courseType = null;
+                renderPage(textSearch, courseType, priceSort);
                 mRelativeLayout_s.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_t.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 mRelativeLayout_e.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -178,13 +200,14 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
                 mRelativeLayout_all.setBackgroundColor(Color.parseColor("#F5F5DC"));
                 break;
             case R.id.bottom_search:
-                String textSearch = mtext_search.getText().toString();//获取文本框内容
-                renderPage(textSearch, null, null);
+                courseType = null;
+                priceSort = null;
+                renderPage(textSearch, courseType, priceSort);
                 break;
             default:
                 break;
         }
     }
 
-    }
+}
 
