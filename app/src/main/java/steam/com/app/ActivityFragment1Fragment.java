@@ -16,8 +16,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,10 +62,19 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
         ll_point_container = (LinearLayout) view.findViewById(R.id.ll_point_container);
         tv_desc = (TextView) view.findViewById(R.id.tv_desc);
 
+//RecyclerView.LayoutManager  负责Item视图的布局
         mRv = view.findViewById(R.id.rv_course);
         mRv.setLayoutManager(new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false));
         courseAdapter = new CourseAdapter(R.layout.item_course, courseBeanList);
         mRv.setAdapter(courseAdapter);
+        //Item的点击事件
+        courseAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Log.d("onItemClick","点击了: ");
+                Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void timer() {
@@ -236,4 +247,5 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
     public void onPageScrollStateChanged(int state) {
         // 滚动状态变化时调用
     }
+
 }

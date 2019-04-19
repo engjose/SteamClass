@@ -30,6 +30,11 @@
         <activity
             android:name=".P_PointActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".CourseDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" /> <!-- or android:screenOrientation="landscape"-->
+
 
     </application>
 

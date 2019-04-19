@@ -4,17 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:id="@+id/item_course">
 
     <ImageView
         android:id="@+id/iv_course_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/a"
-        android:maxHeight="150dp"
-        android:maxWidth="200dp"
-        android:adjustViewBounds="true"/>
+        android:src="@drawable/a" />
 
     <TextView
         android:id="@+id/tv_course_name"
@@ -31,6 +29,6 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textSize="17sp"
-        tools:text="免费" />
+        tools:text="免费 "/>
 
 </LinearLayout>

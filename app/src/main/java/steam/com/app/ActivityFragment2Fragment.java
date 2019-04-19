@@ -17,6 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +65,15 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
         mRv.setLayoutManager(new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false));
         courseAdapter = new CourseAdapter(R.layout.item_course, courseBeanList);
         mRv.setAdapter(courseAdapter);
+        //Item的点击事件
+        courseAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Log.d("onItemClick","点击了: ");
+                Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         mtext_search = view.findViewById(R.id.text_search);
         mRelativeLayout_s = view.findViewById(R.id.RelativeLayout_s);
         view.findViewById(R.id.RelativeLayout_s).setOnClickListener(this);
