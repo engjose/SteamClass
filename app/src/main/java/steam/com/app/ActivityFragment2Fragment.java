@@ -1,6 +1,7 @@
 package steam.com.app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -71,6 +72,10 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Log.d("onItemClick","点击了: ");
                 Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
+                CourseBean item = (CourseBean) adapter.getItem(position);
+                Intent intent = new Intent(getContext(), CourseDetailActivity.class);
+                intent.putExtra("course",item);
+                startActivity(intent);
             }
         });
 

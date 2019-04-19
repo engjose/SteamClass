@@ -1,18 +1,21 @@
 package steam.com.app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cn.jzvd.Jzvd;
 import cn.jzvd.JzvdStd;
+import steam.com.app.mould.CourseBean;
 
 public class CourseDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mbtn_collet;
-    private Button mbtn_learn;
 
     private TextView mcourse_name;
     private TextView mcourse_price;
@@ -23,9 +26,12 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     private TextView mmerchant_info;
 
     private JzvdStd mvideoplayer;
+    private CourseBean courseBean;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        courseBean = (CourseBean) intent.getSerializableExtra("course");
         setContentView(R.layout.course_detail);//etContentView（）方法是给当前活动加载一个布局
         initView();
         initListener();
@@ -35,7 +41,6 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     // xml页面布局中获得对应的UI控件
     private void initView() {
         mbtn_collet = findViewById(R.id.btn_collect);
-        mbtn_learn = findViewById(R.id.btn_learn);
         mcourse_name =findViewById(R.id.course_name);
         mcourse_price = findViewById(R.id.course_price);
         mcourse_info = findViewById(R.id.course_info);
@@ -45,12 +50,12 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         mmerchant_info =findViewById(R.id.merchant_info);
 
         JzvdStd jzvdStd = (JzvdStd) findViewById(R.id.videoplayer);
+        Log.i("coursName",courseBean.courseName);
     }
 
     //“收藏”和“加入学习”按钮添加监听器
     private void  initListener() {
         mbtn_collet.setOnClickListener(this);
-        mbtn_learn.setOnClickListener(this);
     }
     //“收藏”和“加入学习”按钮功能实现
     @Override
