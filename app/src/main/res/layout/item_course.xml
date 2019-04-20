@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:textSize="17sp"
-        tools:text="免费 "/>
+        tools:text="免费 "
+        android:textColor="#0044FF"/>
 
 </LinearLayout>

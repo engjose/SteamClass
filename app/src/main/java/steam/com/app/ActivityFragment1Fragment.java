@@ -1,6 +1,7 @@
 package steam.com.app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
@@ -71,8 +72,11 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
         courseAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Log.d("onItemClick","点击了: ");
-                Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "进入课程详情", Toast.LENGTH_SHORT).show();
+                CourseBean item = (CourseBean) adapter.getItem(position);
+                Intent intent = new Intent(getContext(), CourseDetailActivity.class);
+                intent.putExtra("course",item);
+                startActivity(intent);
             }
         });
     }

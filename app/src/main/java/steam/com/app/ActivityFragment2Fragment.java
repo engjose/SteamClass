@@ -70,7 +70,7 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
         courseAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "进入课程详情", Toast.LENGTH_SHORT).show();
                 CourseBean item = (CourseBean) adapter.getItem(position);
                 Intent intent = new Intent(getContext(), CourseDetailActivity.class);
                 intent.putExtra("course",item);
