@@ -1,6 +1,7 @@
 package steam.com.app;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -22,6 +23,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +35,7 @@ import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.CourseBean;
 import steam.com.app.mould.CourseResp;
+import steam.com.app.mould.OrderBean;
 
 public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnPageChangeListener {
     private ViewPager viewPager;
@@ -42,6 +48,13 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
     private CourseAdapter courseAdapter;
     List<String> imgUrlList = new ArrayList<>();
     List<String> contentDescsList = new ArrayList<>();
+    private int position;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        EventBus.getDefault().register(this);
+    }
 
     //这里重写了Fragment的onCreateView（）方法，
 // 然后再这个方法中通过LayoutInflater的inflater（）方法将定义好的activity_fragment_1布局动态加载进来
@@ -72,10 +85,11 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
         courseAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityFragment1Fragment.this.position = position;
                 Toast.makeText(getActivity(), "进入课程详情", Toast.LENGTH_SHORT).show();
                 CourseBean item = (CourseBean) adapter.getItem(position);
                 Intent intent = new Intent(getContext(), CourseDetailActivity.class);
-                intent.putExtra("course",item);
+                intent.putExtra("course", item);
                 startActivity(intent);
             }
         });
@@ -252,4 +266,17 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
         // 滚动状态变化时调用
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(String type) {
+        if ("add".equals(type)) {
+            CourseBean item = (CourseBean) courseAdapter.getItem(position);
+            item.isBuy = true;
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+    }
 }

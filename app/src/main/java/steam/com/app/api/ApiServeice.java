@@ -8,14 +8,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import steam.com.app.LoginActivity;
 import steam.com.app.application.GlobalCache;
+import steam.com.app.mould.BaseRespBean;
 import steam.com.app.mould.CenterReq;
 import steam.com.app.mould.CenterResp;
 import steam.com.app.mould.Constans;
 import steam.com.app.mould.CourseReq;
-import steam.com.app.mould.CourseBean;
 import steam.com.app.mould.CourseResp;
 import steam.com.app.mould.LoginReq;
 import steam.com.app.mould.LoginResp;
+import steam.com.app.mould.OrderCancelReq;
+import steam.com.app.mould.OrderPayReq;
+import steam.com.app.mould.OrderPlaceReq;
+import steam.com.app.mould.OrderPlaceResp;
 import steam.com.app.mould.RegisterReq;
 import steam.com.app.mould.RegisterResp;
 import steam.com.app.mould.UpdatepswReq;
@@ -115,5 +119,46 @@ public class ApiServeice {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    /**
+     * 下单
+     *
+     * @return
+     */
+    public static Observable<OrderPlaceResp> orderPlace(String courseId, float price) {
+        OrderPlaceReq orderPlaceReq = new OrderPlaceReq();
+        orderPlaceReq.courseId = courseId;
+        orderPlaceReq.price = price;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .orderPlace(orderPlaceReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
+    /**
+     * 支付
+     *
+     * @return
+     */
+    public static Observable<BaseRespBean> orderPay(String orderId) {
+        OrderPayReq orderPayReq = new OrderPayReq();
+        orderPayReq.orderId = orderId;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .orderPay(orderPayReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 取消订单
+     *
+     * @return
+     */
+    public static Observable<BaseRespBean> orderCancel(String orderId) {
+        OrderCancelReq orderCancelReq = new OrderCancelReq();
+        orderCancelReq.orderId = orderId;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .orderCancel(orderCancelReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

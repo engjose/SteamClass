@@ -1,6 +1,7 @@
 package steam.com.app;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,10 +48,6 @@ public class ActivityFragment3Fragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        for (int i = 0; i < 20; i++) {
-            OrderBean orderBean = new OrderBean();
-            orderList.add(orderBean);
-        }
         initView();
         initListener();
         initData();
@@ -70,7 +67,10 @@ public class ActivityFragment3Fragment extends Fragment {
         orderListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(getContext(), "item", Toast.LENGTH_SHORT).show();
+                OrderBean item = (OrderBean) adapter.getItem(position);
+                Intent intent = new Intent(getContext(), OrderDetailActivity.class);
+                intent.putExtra("orderBean", item);
+                startActivity(intent);
             }
         });
     }
@@ -89,6 +89,10 @@ public class ActivityFragment3Fragment extends Fragment {
                             UserBean userInfo = centerResp.userInfo;
                             Glide.with(GlobalCache.getContext()).load(userInfo.headPic).into(mAvatar);
                             mNickName.setText(userInfo.nickName);
+
+                            orderList.clear();
+                            orderList.addAll(centerResp.orderInfo.payOrderList);
+                            orderListAdapter.notifyDataSetChanged();
                         } else {
                             Toast.makeText(getActivity(), centerResp.message, Toast.LENGTH_SHORT).show();
                             ApiServeice.tokenInvalid(GlobalCache.getContext(), centerResp.code);

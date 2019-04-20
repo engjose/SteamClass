@@ -18,6 +18,7 @@ import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.CenterResp;
+import steam.com.app.mould.OrderInfo;
 import steam.com.app.mould.PointBean;
 import steam.com.app.mould.UserBean;
 
@@ -28,6 +29,7 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
     private TextView m_nickName;
     // 积分属性
     private PointBean point;
+    private OrderInfo orderInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,6 +67,8 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
                             UserBean userInfo = centerResp.userInfo;
                             point = centerResp.point;
 
+                            orderInfo = centerResp.orderInfo;
+
                             Glide.with(GlobalCache.getContext()).load(userInfo.headPic).into(m_headPic);
                             m_nickName.setText(userInfo.nickName);
                         } else {
@@ -91,6 +95,7 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
             }
             case R.id.btn_order: {
                 Intent intent = new Intent(getContext(), OrderListActivity.class);
+                intent.putExtra("orderInfo", orderInfo);
                 startActivity(intent);
                 break;
             }

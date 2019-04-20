@@ -1,6 +1,7 @@
 package steam.com.app;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +49,15 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
     private String courseType = null;
     private String priceSort = null;
     private String textSearch = null;
-
+    private int position;
     Spinner mspinner_price;
     String[] s_price = {"价格排序", "价格升序", "价格降序"};
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        EventBus.getDefault().register(this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,10 +81,11 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
         courseAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ActivityFragment2Fragment.this.position = position;
                 Toast.makeText(getActivity(), "进入课程详情", Toast.LENGTH_SHORT).show();
                 CourseBean item = (CourseBean) adapter.getItem(position);
                 Intent intent = new Intent(getContext(), CourseDetailActivity.class);
-                intent.putExtra("course",item);
+                intent.putExtra("course", item);
                 startActivity(intent);
             }
         });
@@ -223,6 +235,20 @@ public class ActivityFragment2Fragment extends Fragment implements View.OnClickL
             default:
                 break;
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(String type) {
+        if ("add".equals(type)) {
+            CourseBean item = (CourseBean) courseAdapter.getItem(position);
+            item.isBuy = true;
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 
 }

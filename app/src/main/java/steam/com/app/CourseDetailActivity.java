@@ -17,13 +17,19 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.jzvd.Jzvd;
 import cn.jzvd.JzvdStd;
+import io.reactivex.functions.Consumer;
+import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
+import steam.com.app.mould.BaseRespBean;
 import steam.com.app.mould.CourseBean;
+import steam.com.app.mould.OrderPlaceResp;
 
 public class CourseDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mbtn_collected;
@@ -101,12 +107,36 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                 //TODO implement
                 break;
             case R.id.btn_learn:
-                Intent intent = new Intent(getApplicationContext(), OrderDetailActivity.class);
-                startActivity(intent);
+                orderPlace();
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 下单
+     */
+    @SuppressLint("CheckResult")
+    private void orderPlace() {
+        ApiServeice.orderPlace(courseBean.courseId, courseBean.price)
+                .subscribe(new Consumer<OrderPlaceResp>() {
+                    @Override
+                    public void accept(OrderPlaceResp orderPlaceResp) throws Exception {
+                        if (orderPlaceResp.code == 0) {
+                            mbtn_learn.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(), "添加成功，请去订单列表查看", Toast.LENGTH_SHORT).show();
+                            EventBus.getDefault().post("add");
+                        } else {
+                            ApiServeice.tokenInvalid(getApplicationContext(), orderPlaceResp.code);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.i("order", throwable.getMessage());
+                    }
+                });
     }
 
     //视频播放控制
