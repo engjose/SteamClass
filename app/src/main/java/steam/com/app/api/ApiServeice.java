@@ -100,7 +100,7 @@ public class ApiServeice {
     }
 
     /**
-     * 修课程
+     * 课程
      *
      * @return
      */

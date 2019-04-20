@@ -15,4 +15,5 @@ public class CourseBean implements Serializable {
     public String priceType;
     public String teacherInfo;
     public String teacherName;
+    public String videoUrl;
 }
