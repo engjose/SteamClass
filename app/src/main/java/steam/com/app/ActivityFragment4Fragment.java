@@ -2,7 +2,6 @@ package steam.com.app;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -15,17 +14,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.io.File;
-import java.net.URI;
-
 import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.CenterResp;
-import steam.com.app.mould.Constans;
 import steam.com.app.mould.PointBean;
 import steam.com.app.mould.UserBean;
-import steam.com.app.util.Store;
 
 public class ActivityFragment4Fragment extends Fragment implements View.OnClickListener {
 
@@ -46,7 +40,7 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
         super.onViewCreated(view, savedInstanceState);
 
         m_rBody = (RelativeLayout) view.findViewById(R.id.r_body);
-        m_headPic = (ImageView) view.findViewById(R.id.head_pic);
+        m_headPic = (ImageView) view.findViewById(R.id.avatar);
         m_nickName = (TextView) view.findViewById(R.id.nick_name);
         view.findViewById(R.id.btn_information).setOnClickListener(this);
         view.findViewById(R.id.btn_order).setOnClickListener(this);
@@ -90,23 +84,27 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_information:
+            case R.id.btn_information: {
                 Intent intent = new Intent(getActivity(), P_InformationActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.btn_order:
-                //TODO implement
+            }
+            case R.id.btn_order: {
+                Intent intent = new Intent(getContext(), OrderListActivity.class);
+                startActivity(intent);
                 break;
+            }
             case R.id.btn_collect:
                 //TODO implement
                 break;
-            case R.id.btn_point:
+            case R.id.btn_point: {
                 if (point != null) {
                     Intent pointIntent = new Intent(getActivity(), P_PointActivity.class);//切换到P_PointActivity页面
                     pointIntent.putExtra("point", point);//附带积分属性相关信息，调用putExtra（）方法传递
                     startActivity(pointIntent);
                 }
                 break;
+            }
             default:
                 break;
         }

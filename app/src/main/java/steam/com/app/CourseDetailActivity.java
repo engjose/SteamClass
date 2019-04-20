@@ -67,7 +67,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         if (courseBean.priceType.equals("0")) {
             mcourse_price.setText("免费");
         } else {
-            mcourse_price.setText("¥"+courseBean.price + "");
+            mcourse_price.setText("¥" + courseBean.price + "");
         }
         mcourse_info.setText(courseBean.courseInfo);
         mteacher_name.setText(courseBean.teacherName);
@@ -80,6 +80,11 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         jzvdStd.setUp("http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4", courseBean.courseName, Jzvd.SCREEN_WINDOW_NORMAL);
 //        jzvdStd.setUp(courseBean.videoUrl, courseBean.courseName, Jzvd.SCREEN_WINDOW_NORMAL);
         Glide.with(GlobalCache.getContext()).load(courseBean.coursePic).into(jzvdStd.thumbImageView);
+
+        //已经学习的课程不能重复下单
+        if (courseBean.isBuy) {
+            mbtn_learn.setVisibility(View.INVISIBLE);
+        }
     }
 
     //“收藏”和“加入学习”按钮添加监听器
@@ -96,7 +101,8 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                 //TODO implement
                 break;
             case R.id.btn_learn:
-                //TODO implement
+                Intent intent = new Intent(getApplicationContext(), OrderDetailActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -111,6 +117,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         }
         super.onBackPressed();
     }
+
     @Override
     protected void onPause() {
         super.onPause();

@@ -13,8 +13,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -34,8 +34,12 @@
             android:name=".CourseDetailActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" /> <!-- or android:screenOrientation="landscape"-->
-
-
+        <activity
+            android:name=".OrderListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="账号"
+            android:text="lee11"
             android:padding="10dp" />
         <EditText
             android:id="@+id/et_password"
@@ -29,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="密码"
+            android:text="123456"
             android:inputType="textPassword"
             android:padding="10dp" />
         <Button
