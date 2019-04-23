@@ -104,7 +104,7 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
                     public void accept(CollectDetailResq collectDetailResq) {
                         if (collectDetailResq.code == 0) {
                             collectlList.clear();
-                            collectlList.addAll(collectDetailResq.collectList);
+                            collectlList.addAll(collectDetailResq.courseList);
                             collectAdapter.notifyDataSetChanged();
                         } else {
                             ApiServeice.tokenInvalid(CollectActivity.this, collectDetailResq.code);

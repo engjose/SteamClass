@@ -4,5 +4,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CollectDetailResq extends BaseRespBean{
-    public List<CollectDetailBean> collectList = new ArrayList<>();
+    public List<CollectDetailBean> courseList = new ArrayList<>();
 }
