@@ -45,12 +45,17 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        courseBean = (CourseBean) intent.getSerializableExtra("course");
         setContentView(R.layout.course_detail);//etContentView（）方法是给当前活动加载一个布局
+        initData();
         initView();
         initListener();
-        initData();
+    }
+
+    private void initData() {
+        Intent intent = getIntent();
+        courseBean = (CourseBean) intent.getSerializableExtra("course");
+        String id =courseBean.courseId;
+        renderPage(id, null, null,null);
     }
 
     // xml页面布局中获得对应的UI控件
@@ -105,10 +110,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                 break;
         }
     }
-    private void initData() {
-        String id =courseBean.courseId;
-        renderPage(id, null, null,null);
-    }
+
     /**
      * 获取课程详情
      */

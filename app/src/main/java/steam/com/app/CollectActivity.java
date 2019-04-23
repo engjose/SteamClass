@@ -19,9 +19,12 @@ import java.util.List;
 import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
+import steam.com.app.mould.BaseRespBean;
 import steam.com.app.mould.CenterResp;
 import steam.com.app.mould.CollectDetailBean;
 import steam.com.app.mould.CollectDetailResq;
+import steam.com.app.mould.ColletCancelResq;
+import steam.com.app.mould.OrderBean;
 import steam.com.app.mould.UserBean;
 
 
@@ -37,8 +40,6 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EventBus.getDefault().register(this);
-
         setContentView(R.layout.course_collet_list);
         initView();
         getuserinfo();
@@ -61,12 +62,26 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
                 if (item == null) {
                     return;
                 }
-                Intent intent = new Intent(CollectActivity.this, OrderDetailActivity.class);
+                Intent intent = new Intent(CollectActivity.this, CourseDetailActivity.class);
                 intent.putExtra("collectDetailBean", item);
                 startActivity(intent);
             }
         });
-
+        collectAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                CollectActivity.this.position = position;
+                CollectDetailBean item = (CollectDetailBean) adapter.getItem(position);
+                int id = view.getId();
+                switch (id) {
+                    case R.id.btn_cancelcollet:
+                        cancelcollet(item);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
 
     }
 
@@ -118,6 +133,28 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
                 });
     }
 
+    //取消收藏
+    @SuppressLint("CheckResult")
+    private void cancelcollet(CollectDetailBean item) {
+        ApiServeice.colletCancel(item.courseId)
+                .subscribe(new Consumer<ColletCancelResq>() {
+                    @Override
+                    public void accept(ColletCancelResq colletCancelResq) throws Exception {
+                        if (colletCancelResq.code == 0) {
+                            collectlList.remove(item);
+                            collectAdapter.notifyDataSetChanged();
+                            item.isCollect = "0";
+                        } else {
+                            ApiServeice.tokenInvalid(getApplicationContext(), colletCancelResq.code);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.i("orderCancel", throwable.getMessage());
+                    }
+                });
+    }
 
     @Override
     public void onClick(View v) {

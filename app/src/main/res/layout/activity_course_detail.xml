@@ -23,56 +23,115 @@
         android:scaleType="centerCrop"
         android:src="@drawable/a" />
 
-    <TextView
-        android:id="@+id/tv_merchant_name"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:singleLine="true"
-        android:text="商家名称"
-        android:textColor="#000000"
-        android:textSize="17sp" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商家名称："
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_merchant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="123"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/type1"/>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_course_type"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:singleLine="true"
-        android:text="课程分类"
-        android:textColor="#000000"
-        android:textSize="17sp" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/type2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="课程分类："
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_course_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="123"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/type2"/>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_course_name"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:singleLine="true"
-        android:text="课程名称"
-        android:textColor="#000000"
-        android:textSize="17sp" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/type3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="课程名称："
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="123"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/type3"/>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_order_time"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:singleLine="true"
-        android:text="下单时间"
-        android:textColor="#000000"
-        android:textSize="17sp" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/type4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下单时间："
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_order_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="123"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:layout_toRightOf="@+id/type4"/>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_course_price"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:singleLine="true"
-        android:text="￥58"
-        android:textColor="#ed4e48"
-        android:textSize="17sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/type5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="课程价格："
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_course_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="123"
+            android:textColor="#FF1100"
+            android:textSize="20sp"
+            android:layout_toRightOf="@+id/type5"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/ll_handle_order"
@@ -87,8 +146,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:text="付款"
-            android:textColor="#000000"
-            android:textSize="13sp" />
+            android:textColor="#F9FCFC"
+            android:background="#00DDFF"
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/btn_cancel"
@@ -97,6 +157,7 @@
             android:layout_marginLeft="20dp"
             android:text="取消"
             android:textColor="#000000"
-            android:textSize="13sp" />
+            android:background="#F4E4E4"
+            android:textSize="15sp" />
     </LinearLayout>
 </LinearLayout>

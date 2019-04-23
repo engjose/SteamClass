@@ -38,10 +38,10 @@ public class OrderListAdapter extends BaseQuickAdapter<OrderBean, BaseViewHolder
         helper.setText(R.id.tv_order_time, item.createTime);
         helper.setText(R.id.tv_course_name, item.courseName);
         helper.setText(R.id.tv_course_type, item.courseTypeDesc);
-        if (item.priceType == "0") {
+         if (item.priceType .equals("0")) {
             helper.setText(R.id.tv_course_price, "免费");
         } else {
-            helper.setText(R.id.tv_course_price, item.price + "");
+            helper.setText(R.id.tv_course_price, "¥"+item.price + "");
         }
 
         View view = helper.getView(R.id.ll_handle_order);

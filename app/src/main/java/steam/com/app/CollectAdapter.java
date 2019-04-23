@@ -29,10 +29,10 @@ public class CollectAdapter extends BaseQuickAdapter<CollectDetailBean, BaseView
         helper.setText(R.id.tv_merchant_name1, item.merchantName);
         helper.setText(R.id.tv_course_name1, item.courseName);
         helper.setText(R.id.tv_course_type1, item.courseTypeDesc);
-        if (item.priceType == "0") {
+        if (item.priceType.equals("0")) {
             helper.setText(R.id.tv_course_price1, "免费");
         } else {
-            helper.setText(R.id.tv_course_price1, item.price + "");
+            helper.setText(R.id.tv_course_price1, "¥"+item.price + "");
         }
 
     }
