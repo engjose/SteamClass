@@ -23,12 +23,13 @@ import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.CenterResp;
+import steam.com.app.mould.Constans;
+import steam.com.app.mould.CourseDetailReq;
+import steam.com.app.mould.CourseDetailResq;
 import steam.com.app.mould.OrderBean;
 import steam.com.app.mould.UserBean;
+import steam.com.app.util.Store;
 
-/**
- * @author zshp
- */
 public class ActivityFragment3Fragment extends Fragment {
     private List<OrderBean> orderList = new ArrayList<>();
 
@@ -68,7 +69,7 @@ public class ActivityFragment3Fragment extends Fragment {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 OrderBean item = (OrderBean) adapter.getItem(position);
-                Intent intent = new Intent(getContext(), OrderDetailActivity.class);
+                Intent intent = new Intent(getContext(), CourseDetailActivity2.class);
                 intent.putExtra("orderBean", item);
                 startActivity(intent);
             }

@@ -11,7 +11,15 @@ import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.BaseRespBean;
 import steam.com.app.mould.CenterReq;
 import steam.com.app.mould.CenterResp;
+import steam.com.app.mould.CollectDetailReq;
+import steam.com.app.mould.CollectDetailResq;
+import steam.com.app.mould.ColletAddReq;
+import steam.com.app.mould.ColletAddResq;
+import steam.com.app.mould.ColletCancelReq;
+import steam.com.app.mould.ColletCancelResq;
 import steam.com.app.mould.Constans;
+import steam.com.app.mould.CourseDetailReq;
+import steam.com.app.mould.CourseDetailResq;
 import steam.com.app.mould.CourseReq;
 import steam.com.app.mould.CourseResp;
 import steam.com.app.mould.LoginReq;
@@ -104,7 +112,7 @@ public class ApiServeice {
     }
 
     /**
-     * 课程
+     * 课程列表
      *
      * @return
      */
@@ -161,4 +169,62 @@ public class ApiServeice {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    /**
+     * 课程详情
+     *
+     * @return
+     */
+    public static Observable<CourseDetailResq> courseDetail(String courseId, String courseNameMatch, String courseType, String priceSort) {
+        CourseDetailReq courseDetailReq = new CourseDetailReq();
+        courseDetailReq.courseId = courseId;
+        courseDetailReq.courseNameMatch = courseNameMatch;
+        courseDetailReq.courseType = courseType;
+        courseDetailReq.priceSort = priceSort;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .courseDetail(courseDetailReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+    /**
+     * 收藏
+     *
+     * @return
+     */
+    public static Observable<ColletAddResq> colletAdd(String courseId) {
+        ColletAddReq colletAddReq = new ColletAddReq();
+        colletAddReq.courseId = courseId;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .colletAdd(colletAddReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 取消订单
+     *
+     * @return
+     */
+    public static Observable<ColletCancelResq> colletCancel(String courseId) {
+        ColletCancelReq colletCancelReq = new ColletCancelReq();
+        colletCancelReq.courseId = courseId;
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .colletCancel(colletCancelReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 收藏详情
+     *
+     * @return
+     */
+    public static Observable<CollectDetailResq> colletList() {
+        CollectDetailReq collectDetailReq = new CollectDetailReq();
+        return RetrofitHelper.getInstance().getApiService(ApiUrl.BASE_URL, ApiInterface.class, null)
+                .colletList(collectDetailReq)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
 }

@@ -40,6 +40,14 @@
         <activity
             android:name=".OrderDetailActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".CourseDetailActivity2"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" /> <!-- or android:screenOrientation="landscape"-->
+        <activity
+            android:name=".CollectActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

@@ -6,6 +6,14 @@ import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import steam.com.app.mould.BaseRespBean;
+import steam.com.app.mould.CollectDetailReq;
+import steam.com.app.mould.CollectDetailResq;
+import steam.com.app.mould.ColletAddReq;
+import steam.com.app.mould.ColletAddResq;
+import steam.com.app.mould.ColletCancelReq;
+import steam.com.app.mould.ColletCancelResq;
+import steam.com.app.mould.CourseDetailReq;
+import steam.com.app.mould.CourseDetailResq;
 import steam.com.app.mould.OrderCancelReq;
 import steam.com.app.mould.CenterReq;
 import steam.com.app.mould.CenterResp;
@@ -94,4 +102,39 @@ public interface ApiInterface {
     @POST(ApiUrl.ORDER_CANCEL)
     Observable<BaseRespBean> orderCancel(@Body OrderCancelReq requestBean);
 
+    /**
+     * 课程详情
+     *
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrl.COURSE_DETAIL)
+    Observable<CourseDetailResq> courseDetail(@Body CourseDetailReq requestBean);
+
+    /**
+     * 收藏
+     *
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrl.COLLECT_ADD)
+    Observable<ColletAddResq> colletAdd(@Body ColletAddReq requestBean);
+
+    /**
+     * 取消收藏
+     *
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrl.COLLECT_CANCEL)
+    Observable<ColletCancelResq> colletCancel(@Body ColletCancelReq requestBean);
+
+    /**
+     * 收藏详情
+     *
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrl.COLLECT_LIST)
+    Observable<CollectDetailResq> colletList(@Body CollectDetailReq requestBean);
 }

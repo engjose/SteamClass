@@ -11,4 +11,8 @@ public class ApiUrl {
     public static final String ORDER_PLACE = "order/place";
     public static final String ORDER_PAY = "order/pay";
     public static final String ORDER_CANCEL = "order/cancel";
+    public static final String COURSE_DETAIL = "course/detail";
+    public static final String COLLECT_ADD = "collect/add";
+    public static final String COLLECT_CANCEL = "collect/cancel";
+    public static final String COLLECT_LIST = "collect/list";
 }

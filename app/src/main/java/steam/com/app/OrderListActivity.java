@@ -27,12 +27,6 @@ import steam.com.app.mould.BaseRespBean;
 import steam.com.app.mould.OrderBean;
 import steam.com.app.mould.OrderInfo;
 
-/**
- * File: OrderListActivity.java
- * Create: 2019/4/20 4:38 PM
- *
- * @author zshp
- */
 public class OrderListActivity extends AppCompatActivity implements View.OnClickListener {
     private List<OrderBean> orderList = new ArrayList<>();
 

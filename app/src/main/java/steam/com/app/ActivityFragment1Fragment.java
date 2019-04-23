@@ -252,7 +252,6 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
 
         //设置文本
         tv_desc.setText(contentDescsList.get(newPosition));
-
         // 把之前的禁用, 把最新的启用, 更新指示器
         ll_point_container.getChildAt(previousSelectedPosition).setEnabled(false);
         ll_point_container.getChildAt(newPosition).setEnabled(true);

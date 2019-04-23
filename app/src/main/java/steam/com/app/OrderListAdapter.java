@@ -18,9 +18,6 @@ import steam.com.app.mould.OrderBean;
 
 /**
  * File: OrderListAdapter.java
- * Create: 2019/4/20 5:31 PM
- *
- * @author zshp
  */
 public class OrderListAdapter extends BaseQuickAdapter<OrderBean, BaseViewHolder> {
     private boolean onlyShowPayed = false;

@@ -18,6 +18,7 @@ import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.CenterResp;
+import steam.com.app.mould.CollectDetailBean;
 import steam.com.app.mould.OrderInfo;
 import steam.com.app.mould.PointBean;
 import steam.com.app.mould.UserBean;
@@ -30,6 +31,7 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
     // 积分属性
     private PointBean point;
     private OrderInfo orderInfo;
+    private CollectDetailBean collectDetailBean;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -100,7 +102,8 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
                 break;
             }
             case R.id.btn_collect:
-                //TODO implement
+                Intent intent = new Intent(getActivity(), CollectActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_point: {
                 if (point != null) {

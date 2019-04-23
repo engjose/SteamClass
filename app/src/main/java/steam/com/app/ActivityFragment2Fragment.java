@@ -38,7 +38,7 @@ import steam.com.app.mould.CourseResp;
 public class ActivityFragment2Fragment extends Fragment implements View.OnClickListener {
     private RecyclerView mRv;
     private List<CourseBean> courseBeanList = new ArrayList<>();
-    private CourseAdapter courseAdapter;
+    public CourseAdapter courseAdapter;
     private EditText mtext_search;
     private RelativeLayout mRelativeLayout_s;
     private RelativeLayout mRelativeLayout_t;

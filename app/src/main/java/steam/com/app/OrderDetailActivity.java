@@ -22,15 +22,7 @@ import steam.com.app.api.ApiServeice;
 import steam.com.app.mould.BaseRespBean;
 import steam.com.app.mould.OrderBean;
 
-/**
- * File: OrderDetailActivity.java
- * <p>
- * Author: zshp
- * <p>
- * Create: 2019/4/20 8:31 PM
- *
- * @author zshp
- */
+
 public class OrderDetailActivity extends AppCompatActivity {
 
     private ImageView courseImg;

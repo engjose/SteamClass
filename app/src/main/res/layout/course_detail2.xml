@@ -27,37 +27,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="价格"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textColor="#FF1100"/>
-            <Button
-                android:id="@+id/btn_learn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:text="加入学习"
-                android:textColor="#F9FCFC"
-                android:background="#00DDFF"/>
-            <Button
-                android:id="@+id/btn_coursecollect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="收藏"
-                android:background="#E5E7EB" />
-            <Button
-                android:id="@+id/btn_coursecollected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="已收藏"
-                android:background="#E5E7EB"
-                android:visibility="gone"
-                android:layout_marginLeft="20dp"/>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="课程简介:"
             android:textSize="17dp"
+            android:layout_marginTop="20dp"
             android:textColor="#0099FF"/>
         <TextView
             android:id="@+id/course_info"
@@ -65,11 +43,11 @@
             android:layout_height="wrap_content"
             android:text="课程简介"
             android:textSize="15dp" />
-      <View
-          android:layout_width="fill_parent"
-          android:layout_height="5dp"
-          android:layout_marginTop="10dp"
-          android:background="#E5E7EB"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#E5E7EB"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
