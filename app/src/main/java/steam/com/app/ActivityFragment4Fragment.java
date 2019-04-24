@@ -50,6 +50,7 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
         view.findViewById(R.id.btn_order).setOnClickListener(this);
         view.findViewById(R.id.btn_collect).setOnClickListener(this);
         view.findViewById(R.id.btn_point).setOnClickListener(this);
+        view.findViewById(R.id.btn_back).setOnClickListener(this);
 
         getUserCenter();
     }
@@ -111,8 +112,14 @@ public class ActivityFragment4Fragment extends Fragment implements View.OnClickL
                     pointIntent.putExtra("point", point);//附带积分属性相关信息，调用putExtra（）方法传递
                     startActivity(pointIntent);
                 }
-                break;
             }
+                break;
+                case R.id.btn_back: {
+                    Intent intentback = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intentback);
+                    }
+                    break;
+
             default:
                 break;
         }

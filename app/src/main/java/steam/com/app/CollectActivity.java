@@ -62,7 +62,7 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
                 if (item == null) {
                     return;
                 }
-                Intent intent = new Intent(CollectActivity.this, CourseDetailActivity.class);
+                Intent intent = new Intent(CollectActivity.this, CourseDetailActivity3.class);
                 intent.putExtra("collectDetailBean", item);
                 startActivity(intent);
             }

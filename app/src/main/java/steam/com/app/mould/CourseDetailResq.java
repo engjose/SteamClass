@@ -8,6 +8,7 @@ public class CourseDetailResq extends BaseRespBean{
     public String courseType;
     public String courseTypeDesc;
     public boolean isBuy;
+    public String iscollect;
     public String merchantInfo;
     public String merchantName;
     public float price;

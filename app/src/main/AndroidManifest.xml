@@ -47,6 +47,10 @@
         <activity
             android:name=".CollectActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".CourseDetailActivity3"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" /> <!-- or android:screenOrientation="landscape"-->
 
     </application>
 

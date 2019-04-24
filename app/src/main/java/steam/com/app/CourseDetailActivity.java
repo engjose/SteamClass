@@ -19,6 +19,7 @@ import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
 import steam.com.app.mould.BaseRespBean;
 import steam.com.app.mould.CollectDetailBean;
+import steam.com.app.mould.CollectDetailResq;
 import steam.com.app.mould.ColletAddReq;
 import steam.com.app.mould.ColletAddResq;
 import steam.com.app.mould.ColletCancelResq;
@@ -41,6 +42,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     private JzvdStd mvideoplayer;
     private CourseBean courseBean;
     private ColletAddReq colletAddReq;
+    private CollectDetailBean collectDetailBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,17 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         if (courseBean.isBuy) {
             mbtn_learn.setVisibility(View.INVISIBLE);
         }
+
+        //收藏
+//        if(collectDetailBean.isCollect.equals("0")){
+//            mbtn_coursecollect.setVisibility(View.VISIBLE);
+//            mbtn_coursecollected.setVisibility(View.GONE);
+//        }
+//        if(collectDetailBean.isCollect.equals("1")){
+//            mbtn_coursecollect.setVisibility(View.GONE);
+//            mbtn_coursecollected.setVisibility(View.VISIBLE);
+//        }
+
     }
 
     //“收藏”和“加入学习”按钮添加监听器
@@ -143,6 +156,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                 });
     }
 
+
     /**
      * 下单
      */
@@ -182,7 +196,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                             mbtn_coursecollect.setVisibility(View.GONE);
                             mbtn_coursecollected.setVisibility(View.VISIBLE);
                             Toast.makeText(getApplicationContext(), "收藏成功", Toast.LENGTH_SHORT).show();
-                            EventBus.getDefault().post("add");
+                            EventBus.getDefault().post("collect");
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), colletAddResq.code);
                         }
@@ -208,7 +222,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                         if (colletCancelResq.code == 0) {
                             mbtn_coursecollected.setVisibility(View.GONE);
                             mbtn_coursecollect.setVisibility(View.VISIBLE);
-                            EventBus.getDefault().post("cancel");
+                            EventBus.getDefault().post("collectcancel");
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), colletCancelResq.code);
                         }
