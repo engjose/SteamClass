@@ -24,6 +24,7 @@ public class CourseAdapter extends BaseQuickAdapter<CourseBean, BaseViewHolder>{
         ImageView courseImage = helper.getView(R.id.iv_course_image);
         Glide.with(GlobalCache.getContext()).load(item.coursePic).into(courseImage);
 
+
         helper.setText(R.id.tv_course_name, item.courseName);
         TextView priceType = helper.getView(R.id.tv_price_type);
         if (item.priceType.equals("0")) {

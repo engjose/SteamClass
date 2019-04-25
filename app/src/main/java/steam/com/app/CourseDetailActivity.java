@@ -2,6 +2,7 @@ package steam.com.app;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import org.greenrobot.eventbus.EventBus;
+
+import java.net.URI;
 
 import cn.jzvd.Jzvd;
 import cn.jzvd.JzvdStd;
@@ -143,7 +146,6 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                             Log.i("videourl", courseDetailResp.videoUrl);
                             jzvdStd.setUp(courseDetailResp.videoUrl, courseDetailResp.courseName, Jzvd.SCREEN_WINDOW_NORMAL);
                             Glide.with(GlobalCache.getContext()).load(courseDetailResp.coursePic).into(jzvdStd.thumbImageView);
-
                         } else {
                             ApiServeice.tokenInvalid(CourseDetailActivity.this, courseDetailResp.code);
                         }
