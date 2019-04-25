@@ -172,7 +172,7 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
         for (int i = 0; i < imgUrlList.size(); i++) {
             // 加小白点, 指示器
             View pointView = new View(getActivity());
-            pointView.setBackgroundResource(R.drawable.selector_bg_point);
+            pointView.setBackgroundResource(R.drawable.select_dot);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(10, 10);
             if (i != 0) {
                 layoutParams.leftMargin = 10;
