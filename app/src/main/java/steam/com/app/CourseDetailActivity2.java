@@ -67,12 +67,12 @@ public class CourseDetailActivity2 extends AppCompatActivity  {
                         if (courseDetailResp.code == 0) {
                             mcourse_name.setText(courseDetailResp.courseName);
                             mcourse_price.setText("该课程已加入课程表");
-                            mcourse_info.setText(courseDetailResp.courseInfo);
+                            mcourse_info.setText("\u3000\u3000"+courseDetailResp.courseInfo);
 
                             mteacher_name.setText(courseDetailResp.teacherName);
-                            mteacher_info.setText(courseDetailResp.teacherInfo);
+                            mteacher_info.setText("\u3000\u3000"+courseDetailResp.teacherInfo);
                             mmerchant_name.setText(courseDetailResp.merchantName);
-                            mmerchant_info.setText(courseDetailResp.merchantInfo);
+                            mmerchant_info.setText("\u3000\u3000"+courseDetailResp.merchantInfo);
                             JzvdStd jzvdStd = findViewById(R.id.videoplayer);
                             Log.i("videourl", courseDetailResp.videoUrl);
                             jzvdStd.setUp(courseDetailResp.videoUrl, courseDetailResp.courseName, Jzvd.SCREEN_WINDOW_NORMAL);

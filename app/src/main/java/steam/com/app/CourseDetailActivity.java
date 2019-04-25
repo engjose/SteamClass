@@ -76,14 +76,8 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         mmerchant_name = findViewById(R.id.merchant_name);
         mmerchant_info = findViewById(R.id.merchant_info);
 
-        Log.i("coursName", courseBean.courseName);
-        mcourse_name.setText(courseBean.courseName);
-        mcourse_price.setText(courseBean.priceType);
-        if (courseBean.priceType.equals("0")) {
-            mcourse_price.setText("免费");
-        } else {
-            mcourse_price.setText("¥" + courseBean.price + "");
-        }
+        //Log.i("coursName", courseBean.courseName);
+
 
         //已经学习的课程不能重复下单
         if (courseBean.isBuy) {
@@ -137,11 +131,18 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void accept(CourseDetailResq courseDetailResp) {
                         if (courseDetailResp.code == 0) {
-                            mcourse_info.setText(courseDetailResp.courseInfo);
+                            mcourse_name.setText(courseDetailResp.courseName);
+                            mcourse_price.setText(courseDetailResp.priceType);
+                            if (courseDetailResp.priceType.equals("0")) {
+                                mcourse_price.setText("免费");
+                            } else {
+                                mcourse_price.setText("¥" + courseBean.price + "");
+                            }
+                            mcourse_info.setText("\u3000\u3000"+courseDetailResp.courseInfo);
                             mteacher_name.setText(courseDetailResp.teacherName);
-                            mteacher_info.setText(courseDetailResp.teacherInfo);
+                            mteacher_info.setText("\u3000\u3000"+courseDetailResp.teacherInfo);
                             mmerchant_name.setText(courseDetailResp.merchantName);
-                            mmerchant_info.setText(courseDetailResp.merchantInfo);
+                            mmerchant_info.setText("\u3000\u3000"+courseDetailResp.merchantInfo);
                             JzvdStd jzvdStd = findViewById(R.id.videoplayer);
                             Log.i("videourl", courseDetailResp.videoUrl);
                             jzvdStd.setUp(courseDetailResp.videoUrl, courseDetailResp.courseName, Jzvd.SCREEN_WINDOW_NORMAL);

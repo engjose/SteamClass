@@ -82,11 +82,11 @@ public class CourseDetailActivity3 extends AppCompatActivity{
         } else {
             mcourse_price3.setText("¥" + collectDetailBean.price + "");
         }
-        mcourse_info3.setText(collectDetailBean.courseInfo);
+        mcourse_info3.setText("\u3000\u3000"+collectDetailBean.courseInfo);
         mteacher_name3.setText(collectDetailBean.teacherName);
-        mteacher_info3.setText(collectDetailBean.teacherInfo);
+        mteacher_info3.setText("\u3000\u3000"+collectDetailBean.teacherInfo);
         mmerchant_name3.setText(collectDetailBean.merchantName);
-        mmerchant_info3.setText(collectDetailBean.merchantInfo);
+        mmerchant_info3.setText("\u3000\u3000"+collectDetailBean.merchantInfo);
         JzvdStd jzvdStd = findViewById(R.id.videoplayer3);
         Log.i("videourl", collectDetailBean.videoUrl);
         jzvdStd.setUp(collectDetailBean.videoUrl, collectDetailBean.courseName, Jzvd.SCREEN_WINDOW_NORMAL);

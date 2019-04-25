@@ -32,7 +32,7 @@
             android:id="@+id/RelativeLayout_s"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="30dp">
            <ImageView
                 android:id="@+id/image1"
                 android:layout_width="80dp"
@@ -51,7 +51,7 @@
             android:id="@+id/RelativeLayout_t"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp">
+            android:layout_marginLeft="50dp">
             <ImageView
                 android:id="@+id/image2"
                 android:layout_width="80dp"
@@ -70,7 +70,7 @@
             android:id="@+id/RelativeLayout_e"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp">
+            android:layout_marginLeft="50dp">
             <ImageView
                 android:id="@+id/image3"
                 android:layout_width="80dp"
@@ -94,7 +94,7 @@
             android:id="@+id/RelativeLayout_a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="30dp">
             <ImageView
                 android:id="@+id/image4"
                 android:layout_width="80dp"
@@ -113,7 +113,7 @@
             android:id="@+id/RelativeLayout_m"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp">
+            android:layout_marginLeft="50dp">
             <ImageView
                 android:id="@+id/image5"
                 android:layout_width="80dp"
@@ -132,7 +132,7 @@
             android:id="@+id/RelativeLayout_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp">
+            android:layout_marginLeft="50dp">
             <ImageView
                 android:id="@+id/image6"
                 android:layout_width="80dp"

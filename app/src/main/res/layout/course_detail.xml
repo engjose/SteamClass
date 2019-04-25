@@ -10,10 +10,21 @@
             android:id="@+id/videoplayer"
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="老师介绍:"
+            android:textColor="#0099FF"
+            android:textSize="17dp" />
+
         <TextView
             android:id="@+id/course_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="课程标题"
             android:textSize="20dp"/>
         <LinearLayout
@@ -26,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:text="价格"
                 android:textSize="20dp"
                 android:textColor="#FF1100"/>
@@ -56,6 +68,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
             android:text="课程简介:"
             android:textSize="17dp"
             android:textColor="#0099FF"/>
@@ -63,6 +76,7 @@
             android:id="@+id/course_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="课程简介"
             android:textSize="15dp" />
       <View
@@ -70,13 +84,7 @@
           android:layout_height="5dp"
           android:layout_marginTop="10dp"
           android:background="#E5E7EB"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:text="老师介绍:"
-            android:textSize="17dp"
-            android:textColor="#0099FF"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -101,6 +109,7 @@
                 android:id="@+id/teacher_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="教师简介"
                 android:textSize="15dp"
                 android:layout_marginTop="90dp"/>
@@ -114,6 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
             android:text="机构介绍:"
             android:textSize="17dp"
             android:textColor="#0099FF"/>
@@ -134,6 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/merchant_pic"
                 android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
                 android:text="机构名称"
                 android:textSize="15dp"
                 android:textColor="#080808"/>
@@ -141,6 +152,7 @@
                 android:id="@+id/merchant_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="机构简介"
                 android:textSize="15dp"
                 android:layout_marginTop="90dp"/>

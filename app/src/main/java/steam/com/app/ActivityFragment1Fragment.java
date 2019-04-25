@@ -249,15 +249,14 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
         // 新的条目被选中时调用
         System.out.println("onPageSelected: " + position);
         int newPosition = position % imgUrlList.size();
-
         //设置文本
         tv_desc.setText(contentDescsList.get(newPosition));
         // 把之前的禁用, 把最新的启用, 更新指示器
         ll_point_container.getChildAt(previousSelectedPosition).setEnabled(false);
         ll_point_container.getChildAt(newPosition).setEnabled(true);
-
         // 记录之前的位置
         previousSelectedPosition = newPosition;
+
     }
 
     @Override
