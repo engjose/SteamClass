@@ -69,8 +69,8 @@ public class ActivityFragment3Fragment extends Fragment {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 OrderBean item = (OrderBean) adapter.getItem(position);
-                Intent intent = new Intent(getContext(), CourseDetailActivity2.class);
-                intent.putExtra("orderBean", item);
+                Intent intent = new Intent(getContext(), CourseDetailActivity.class);
+                intent.putExtra("courseId", item.courseId);
                 startActivity(intent);
             }
         });

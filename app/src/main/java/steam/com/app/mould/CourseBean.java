@@ -2,7 +2,7 @@ package steam.com.app.mould;
 
 import java.io.Serializable;
 
-public class CourseBean implements Serializable {
+public class CourseBean extends BaseRespBean implements Serializable {
     public String courseId;
     public String courseInfo;
     public String courseName;

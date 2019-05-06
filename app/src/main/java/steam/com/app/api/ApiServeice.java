@@ -18,6 +18,7 @@ import steam.com.app.mould.ColletAddResq;
 import steam.com.app.mould.ColletCancelReq;
 import steam.com.app.mould.ColletCancelResq;
 import steam.com.app.mould.Constans;
+import steam.com.app.mould.CourseBean;
 import steam.com.app.mould.CourseDetailReq;
 import steam.com.app.mould.CourseDetailResq;
 import steam.com.app.mould.CourseReq;
@@ -175,7 +176,7 @@ public class ApiServeice {
      *
      * @return
      */
-    public static Observable<CourseDetailResq> courseDetail(String courseId, String courseNameMatch, String courseType, String priceSort) {
+    public static Observable<CourseBean> courseDetail(String courseId, String courseNameMatch, String courseType, String priceSort) {
         CourseDetailReq courseDetailReq = new CourseDetailReq();
         courseDetailReq.courseId = courseId;
         courseDetailReq.courseNameMatch = courseNameMatch;

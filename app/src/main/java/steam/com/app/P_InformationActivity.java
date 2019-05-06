@@ -36,7 +36,7 @@ public class P_InformationActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_information);//etContentView（）方法是给当前活动加载一个布局
         initView();
         getUserCenter();
-       // submit();
+        // submit();
     }
 
     private void initView() {
@@ -45,7 +45,7 @@ public class P_InformationActivity extends AppCompatActivity implements View.OnC
         m_text_psw = (TextView) findViewById(R.id.text_psw);
         m_text_time = (TextView) findViewById(R.id.text_time);
         m_btn_edit = (Button) findViewById(R.id.btn_edit);
-        m_btn_save =findViewById(R.id.btn_save) ;
+        m_btn_save = findViewById(R.id.btn_save);
         m_btn_edit.setOnClickListener(this);
         m_btn_save.setOnClickListener(this);
         m_text_psw.setFocusable(false);
@@ -92,7 +92,7 @@ public class P_InformationActivity extends AppCompatActivity implements View.OnC
                 m_btn_save.setVisibility(View.VISIBLE);
                 break;
         }
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_save:
                 String text_psw = m_text_psw.getText().toString();//获取文本框内容
                 ApiServeice
@@ -103,12 +103,12 @@ public class P_InformationActivity extends AppCompatActivity implements View.OnC
                                 if (updatepswResp.code == 0) {
                                     Toast.makeText(P_InformationActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
                                     finish();
-                                }else {
+                                } else {
                                     Toast.makeText(P_InformationActivity.this, updatepswResp.message, Toast.LENGTH_SHORT).show();
                                     ApiServeice.tokenInvalid(P_InformationActivity.this, updatepswResp.code);
                                 }
                             }
-                            }, new Consumer<Throwable>() {
+                        }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) {
                                 Toast.makeText(P_InformationActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
@@ -117,9 +117,6 @@ public class P_InformationActivity extends AppCompatActivity implements View.OnC
                 break;
         }
     }
-
-
-
 
 
 }

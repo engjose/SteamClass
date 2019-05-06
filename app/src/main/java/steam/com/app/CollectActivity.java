@@ -12,10 +12,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import io.reactivex.functions.Consumer;
 import steam.com.app.api.ApiServeice;
 import steam.com.app.application.GlobalCache;
@@ -28,7 +31,7 @@ import steam.com.app.mould.OrderBean;
 import steam.com.app.mould.UserBean;
 
 
-public class CollectActivity extends AppCompatActivity implements View.OnClickListener{
+public class CollectActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<CollectDetailBean> collectlList = new ArrayList<>();
     private RecyclerView mRv;
@@ -48,8 +51,8 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
 
 
     private void initView() {
-        mAvatar =findViewById(R.id.mAvatar);
-        mNickName =findViewById(R.id.nick_name);
+        mAvatar = findViewById(R.id.mAvatar);
+        mNickName = findViewById(R.id.nick_name);
 
         mRv = findViewById(R.id.rv_collet_list);
         mRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -62,8 +65,8 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
                 if (item == null) {
                     return;
                 }
-                Intent intent = new Intent(CollectActivity.this, CourseDetailActivity3.class);
-                intent.putExtra("collectDetailBean", item);
+                Intent intent = new Intent(CollectActivity.this, CourseDetailActivity.class);
+                intent.putExtra("courseId", item.courseId);
                 startActivity(intent);
             }
         });

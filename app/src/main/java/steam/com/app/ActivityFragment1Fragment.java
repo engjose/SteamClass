@@ -46,7 +46,7 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
     private RecyclerView mRv;
     private List<CourseBean> courseBeanList = new ArrayList<>();
     private CourseAdapter courseAdapter;
-    List<String> imgUrlList = new ArrayList<>();
+    List<CourseBean> imgUrlList = new ArrayList<>();
     List<String> contentDescsList = new ArrayList<>();
     private int position;
 
@@ -86,10 +86,9 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ActivityFragment1Fragment.this.position = position;
-                Toast.makeText(getActivity(), "进入课程详情", Toast.LENGTH_SHORT).show();
                 CourseBean item = (CourseBean) adapter.getItem(position);
                 Intent intent = new Intent(getContext(), CourseDetailActivity.class);
-                intent.putExtra("course", item);
+                intent.putExtra("courseId", item.courseId);
                 startActivity(intent);
             }
         });
@@ -151,7 +150,7 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
                                         break;
                                     }
                                     CourseBean courseBean = courseResp.courseList.get(i);
-                                    imgUrlList.add(courseBean.coursePic);
+                                    imgUrlList.add(courseBean);
                                     contentDescsList.add(courseBean.courseName);
                                 }
                                 initAdapter();
@@ -221,9 +220,18 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
             int newPosition = position % imgUrlList.size();
             ImageView imageView = new ImageView(getActivity());
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            Glide.with(GlobalCache.getContext()).load(imgUrlList.get(newPosition)).into(imageView);
+            Glide.with(GlobalCache.getContext()).load(imgUrlList.get(newPosition).coursePic).into(imageView);
             // a. 把View对象添加到container中
             container.addView(imageView);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), CourseDetailActivity.class);
+                    intent.putExtra("courseId", imgUrlList.get(newPosition).courseId);
+                    startActivity(intent);
+                }
+            });
             // b. 把View对象返回给框架, 适配器
             return imageView; // 必须重写, 否则报异常
 

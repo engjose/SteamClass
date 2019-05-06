@@ -12,6 +12,7 @@ import steam.com.app.mould.ColletAddReq;
 import steam.com.app.mould.ColletAddResq;
 import steam.com.app.mould.ColletCancelReq;
 import steam.com.app.mould.ColletCancelResq;
+import steam.com.app.mould.CourseBean;
 import steam.com.app.mould.CourseDetailReq;
 import steam.com.app.mould.CourseDetailResq;
 import steam.com.app.mould.OrderCancelReq;
@@ -109,7 +110,7 @@ public interface ApiInterface {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrl.COURSE_DETAIL)
-    Observable<CourseDetailResq> courseDetail(@Body CourseDetailReq requestBean);
+    Observable<CourseBean> courseDetail(@Body CourseDetailReq requestBean);
 
     /**
      * 收藏

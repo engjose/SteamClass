@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.net.URI;
@@ -46,25 +48,26 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     private CourseBean courseBean;
     private ColletAddReq colletAddReq;
     private CollectDetailBean collectDetailBean;
+    private View mModal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.course_detail);//etContentView（）方法是给当前活动加载一个布局
-        initData();
         initView();
         initListener();
+        initData();
     }
 
     private void initData() {
         Intent intent = getIntent();
-        courseBean = (CourseBean) intent.getSerializableExtra("course");
-        String id =courseBean.courseId;
-        renderPage(id, null, null,null);
+        String id = intent.getStringExtra("courseId");
+        renderPage(id, null, null, null);
     }
 
     // xml页面布局中获得对应的UI控件
     private void initView() {
+        mModal = findViewById(R.id.view_modal);
         mbtn_coursecollect = findViewById(R.id.btn_coursecollect);
         mbtn_coursecollected = findViewById(R.id.btn_coursecollected);
         mbtn_learn = findViewById(R.id.btn_learn);
@@ -75,17 +78,25 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         mteacher_info = findViewById(R.id.teacher_info);
         mmerchant_name = findViewById(R.id.merchant_name);
         mmerchant_info = findViewById(R.id.merchant_info);
+    }
 
-        //Log.i("coursName", courseBean.courseName);
-
+    private void refreshView() {
         //已经学习的课程不能重复下单
         if (courseBean.isBuy) {
             mbtn_learn.setVisibility(View.INVISIBLE);
+            mModal.setVisibility(View.GONE);
+        } else {
+            mModal.setVisibility(View.VISIBLE);
         }
-        if("0".equals(courseBean.isCollect)){
+
+        if ("0".equals(courseBean.priceType)) {
+            mModal.setVisibility(View.GONE);
+        }
+
+        if ("0".equals(courseBean.isCollect)) {
             mbtn_coursecollect.setVisibility(View.VISIBLE);
             //mbtn_coursecollected.setVisibility(View.GONE);
-        }else if("1".equals(courseBean.isCollect)){ //已收藏为1，收藏按钮消失，已收藏按钮显示
+        } else if ("1".equals(courseBean.isCollect)) { //已收藏为1，收藏按钮消失，已收藏按钮显示
             //mbtn_coursecollect.setVisibility(View.GONE);
             mbtn_coursecollected.setVisibility(View.VISIBLE);
         }
@@ -96,6 +107,12 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
         mbtn_coursecollect.setOnClickListener(this);
         mbtn_coursecollected.setOnClickListener(this);
         mbtn_learn.setOnClickListener(this);
+        mModal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GlobalCache.getContext(), "付费课程需要购买才能观看！！！", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     //“收藏”和“加入学习”功能实现
@@ -103,7 +120,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_coursecollect:
-               collet();
+                collet();
                 break;
             case R.id.btn_coursecollected:
                 cancelcollet();
@@ -120,30 +137,32 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
      * 获取课程详情
      */
     @SuppressLint("CheckResult")
-    private void renderPage(String courseId,String courseNameMatch, String courseType, String priceSort) {
-        ApiServeice.courseDetail(courseId,courseNameMatch, courseType, priceSort)
-                .subscribe(new Consumer<CourseDetailResq>() {
+    private void renderPage(String courseId, String courseNameMatch, String courseType, String priceSort) {
+        ApiServeice.courseDetail(courseId, courseNameMatch, courseType, priceSort)
+                .subscribe(new Consumer<CourseBean>() {
                     @Override
-                    public void accept(CourseDetailResq courseDetailResp) {
-                        if (courseDetailResp.code == 0) {
-                            mcourse_name.setText(courseDetailResp.courseName);
-                            mcourse_price.setText(courseDetailResp.priceType);
-                            if (courseDetailResp.priceType.equals("0")) {
+                    public void accept(CourseBean course) {
+                        if (course.code == 0) {
+                            courseBean = course;
+                            refreshView();
+                            mcourse_name.setText(course.courseName);
+                            mcourse_price.setText(course.priceType);
+                            if (course.priceType.equals("0")) {
                                 mcourse_price.setText("免费");
                             } else {
-                                mcourse_price.setText("¥" + courseBean.price + "");
+                                mcourse_price.setText("¥" + CourseDetailActivity.this.courseBean.price + "");
                             }
-                            mcourse_info.setText("\u3000\u3000"+courseDetailResp.courseInfo);
-                            mteacher_name.setText(courseDetailResp.teacherName);
-                            mteacher_info.setText("\u3000\u3000"+courseDetailResp.teacherInfo);
-                            mmerchant_name.setText(courseDetailResp.merchantName);
-                            mmerchant_info.setText("\u3000\u3000"+courseDetailResp.merchantInfo);
+                            mcourse_info.setText("\u3000\u3000" + course.courseInfo);
+                            mteacher_name.setText(course.teacherName);
+                            mteacher_info.setText("\u3000\u3000" + course.teacherInfo);
+                            mmerchant_name.setText(course.merchantName);
+                            mmerchant_info.setText("\u3000\u3000" + course.merchantInfo);
                             JzvdStd jzvdStd = findViewById(R.id.videoplayer);
-                            Log.i("videourl", courseDetailResp.videoUrl);
-                            jzvdStd.setUp(courseDetailResp.videoUrl, courseDetailResp.courseName, Jzvd.SCREEN_WINDOW_NORMAL);
-                            Glide.with(GlobalCache.getContext()).load(courseDetailResp.coursePic).into(jzvdStd.thumbImageView);
+                            Log.i("videourl", course.videoUrl);
+                            jzvdStd.setUp(course.videoUrl, course.courseName, Jzvd.SCREEN_WINDOW_NORMAL);
+                            Glide.with(GlobalCache.getContext()).load(course.coursePic).into(jzvdStd.thumbImageView);
                         } else {
-                            ApiServeice.tokenInvalid(CourseDetailActivity.this, courseDetailResp.code);
+                            ApiServeice.tokenInvalid(CourseDetailActivity.this, course.code);
                         }
                     }
                 }, new Consumer<Throwable>() {
@@ -169,6 +188,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                             Toast.makeText(getApplicationContext(), "添加成功，请去订单列表查看", Toast.LENGTH_SHORT).show();
                             EventBus.getDefault().post("add");
                         } else {
+                            Toast.makeText(getApplicationContext(), orderPlaceResp.message, Toast.LENGTH_SHORT).show();
                             ApiServeice.tokenInvalid(getApplicationContext(), orderPlaceResp.code);
                         }
                     }
