@@ -97,13 +97,11 @@ public class CourseDetailActivity3 extends AppCompatActivity{
         if (collectDetailBean.isBuy) {
             mbtn_learn3.setVisibility(View.INVISIBLE);
         }
-
-        //没有收藏为0，收藏按钮显示，已收藏按钮消失
-        if(collectDetailBean.isCollect.equals("0")) {
+        if("0".equals(collectDetailBean.isCollect)){
             mbtn_coursecollect3.setVisibility(View.VISIBLE);
-            mbtn_coursecollected3.setVisibility(View.GONE);
-        }else { //已收藏为1，收藏按钮消失，已收藏按钮显示
-            mbtn_coursecollect3.setVisibility(View.GONE);
+            //mbtn_coursecollected.setVisibility(View.GONE);
+        }else if("1".equals(collectDetailBean.isCollect)){ //已收藏为1，收藏按钮消失，已收藏按钮显示
+            //mbtn_coursecollect.setVisibility(View.GONE);
             mbtn_coursecollected3.setVisibility(View.VISIBLE);
         }
 
@@ -217,6 +215,7 @@ public class CourseDetailActivity3 extends AppCompatActivity{
                         if (colletCancelResq.code == 0) {
                             mbtn_coursecollected3.setVisibility(View.GONE);
                             mbtn_coursecollect3.setVisibility(View.VISIBLE);
+                            Toast.makeText(getApplicationContext(), "您已取消收藏该课程", Toast.LENGTH_SHORT).show();
                             collectlList.remove(item);
                             collectAdapter.notifyDataSetChanged();
                         } else {

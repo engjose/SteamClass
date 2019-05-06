@@ -78,22 +78,17 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
 
         //Log.i("coursName", courseBean.courseName);
 
-
         //已经学习的课程不能重复下单
         if (courseBean.isBuy) {
             mbtn_learn.setVisibility(View.INVISIBLE);
         }
-
-        //收藏
-//        if(collectDetailBean.isCollect.equals("0")){
-//            mbtn_coursecollect.setVisibility(View.VISIBLE);
-//            mbtn_coursecollected.setVisibility(View.GONE);
-//        }
-//        if(collectDetailBean.isCollect.equals("1")){
-//            mbtn_coursecollect.setVisibility(View.GONE);
-//            mbtn_coursecollected.setVisibility(View.VISIBLE);
-//        }
-
+        if("0".equals(courseBean.isCollect)){
+            mbtn_coursecollect.setVisibility(View.VISIBLE);
+            //mbtn_coursecollected.setVisibility(View.GONE);
+        }else if("1".equals(courseBean.isCollect)){ //已收藏为1，收藏按钮消失，已收藏按钮显示
+            //mbtn_coursecollect.setVisibility(View.GONE);
+            mbtn_coursecollected.setVisibility(View.VISIBLE);
+        }
     }
 
     //“收藏”和“加入学习”按钮添加监听器
@@ -225,6 +220,7 @@ public class CourseDetailActivity extends AppCompatActivity implements View.OnCl
                         if (colletCancelResq.code == 0) {
                             mbtn_coursecollected.setVisibility(View.GONE);
                             mbtn_coursecollect.setVisibility(View.VISIBLE);
+                            Toast.makeText(getApplicationContext(), "您已取消收藏该课程", Toast.LENGTH_SHORT).show();
                             EventBus.getDefault().post("collectcancel");
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), colletCancelResq.code);

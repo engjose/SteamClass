@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -103,6 +104,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                         if (baseRespBean.code == 0) {
                             pay.setVisibility(View.GONE);
                             cancel.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "付款成功", Toast.LENGTH_SHORT).show();
                             EventBus.getDefault().post("pay");
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), baseRespBean.code);
@@ -125,6 +127,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                         if (baseRespBean.code == 0) {
                             pay.setVisibility(View.GONE);
                             cancel.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "您已取消该课程", Toast.LENGTH_SHORT).show();
                             EventBus.getDefault().post("cancel");
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), baseRespBean.code);

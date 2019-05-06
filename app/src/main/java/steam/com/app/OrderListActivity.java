@@ -119,6 +119,7 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
                             orderListAdapter.notifyDataSetChanged();
                             item.status = "1";
                             orderInfo.payOrderList.add(item);
+                            Toast.makeText(getApplicationContext(), "付款成功", Toast.LENGTH_SHORT).show();
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), baseRespBean.code);
                         }
@@ -143,6 +144,7 @@ public class OrderListActivity extends AppCompatActivity implements View.OnClick
                             orderListAdapter.notifyDataSetChanged();
                             item.status = "2";
                             orderInfo.cancelOrderList.add(item);
+                            Toast.makeText(getApplicationContext(), "您已取消该课程", Toast.LENGTH_SHORT).show();
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), baseRespBean.code);
                         }

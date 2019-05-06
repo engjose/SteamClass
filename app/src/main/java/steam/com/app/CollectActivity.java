@@ -144,6 +144,7 @@ public class CollectActivity extends AppCompatActivity implements View.OnClickLi
                             collectlList.remove(item);
                             collectAdapter.notifyDataSetChanged();
                             item.isCollect = "0";
+                            Toast.makeText(getApplicationContext(), "您已取消收藏该课程", Toast.LENGTH_SHORT).show();
                         } else {
                             ApiServeice.tokenInvalid(getApplicationContext(), colletCancelResq.code);
                         }

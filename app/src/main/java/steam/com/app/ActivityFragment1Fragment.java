@@ -217,8 +217,7 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
         public Object instantiateItem(ViewGroup container, int position) {
             System.out.println("instantiateItem初始化: " + position);
             // container: 容器: ViewPager
-            // position: 当前要显示条目的位置 0 -> 4
-
+            // position: 当前要显示条目的位置 0 -> 5
             int newPosition = position % imgUrlList.size();
             ImageView imageView = new ImageView(getActivity());
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -227,6 +226,8 @@ public class ActivityFragment1Fragment extends Fragment implements ViewPager.OnP
             container.addView(imageView);
             // b. 把View对象返回给框架, 适配器
             return imageView; // 必须重写, 否则报异常
+
+
         }
 
         // 2. 销毁条目
